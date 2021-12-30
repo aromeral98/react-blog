@@ -1,7 +1,7 @@
 import {
   LOGIN,
   REGISTER
-} from '../actionsTypes/ShareActionTypes'
+} from '../actionsTypes/AuthActionTypes'
 
 export function setUser (payload) {
   return { type: LOGIN, payload }

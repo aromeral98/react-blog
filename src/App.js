@@ -9,6 +9,7 @@ import configureStore from './js/redux/store'
 import LoginScreen from './Pages/LoginScreen'
 import { Provider } from 'react-redux'
 import RegisterScreen from './Pages/RegisterScreen'
+import { AppLayout } from './Pages/AppLayout'
 class App extends React.Component {
   constructor (Props) {
     super(Props)
@@ -41,6 +42,9 @@ class App extends React.Component {
             </Route>
             <Route path='/register'>
               <RegisterScreen />
+            </Route>
+            <Route path='/dashboard'>
+              <AppLayout />
             </Route>
           </Switch>
         </Router>
