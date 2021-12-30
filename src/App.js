@@ -1,12 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './css/main.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom'
+import configureStore from './js/redux/store'
+import LoginScreen from './Pages/LoginScreen'
+import { Provider } from 'react-redux'
+import RegisterScreen from './Pages/RegisterScreen'
+class App extends React.Component {
+  constructor (Props) {
+    super(Props)
+    this.state = {
+      loaded: false,
+      initialState: {},
+      error: false
+    }
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello world</h1>
-    </div>
-  );
+  componentDidMount () {
+    this.setState({
+      initialState: {
+        user: {
+          name: null,
+          email: null
+        }
+      }
+    })
+  }
+
+  render () {
+    const { store } = configureStore(this.state.initialState)
+    return (
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Route exact path='/'>
+              <LoginScreen />
+            </Route>
+            <Route path='/register'>
+              <RegisterScreen />
+            </Route>
+          </Switch>
+        </Router>
+      </Provider>
+    )
+  }
 }
 
-export default App;
+export default App

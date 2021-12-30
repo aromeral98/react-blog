@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# React Public files too big to commit
+
+/public/Milwaukee_World.data
+/public/Milwaukee_World.wasm
