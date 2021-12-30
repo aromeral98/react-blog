@@ -1,0 +1,43 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+
+@font-face {
+    font-family: 'DigitalRoboto';
+    src: url('/fonts/DIGITALDREAM.eot') format('embedded-opentype'), 
+     url('/fonts/DIGITALDREAM.woff') format('woff'), 
+     url('/fonts/DIGITALDREAM.ttf')  format('truetype'),
+     url('/fonts/DIGITALDREAM.svg') format('svg');
+}
+@font-face {
+    font-family: 'Arial Black';
+    src: url('/fonts/ARIALBLK.eot') format('embedded-opentype'), 
+     url('/fonts/ARIALBLK.woff') format('woff'), 
+     url('/fonts/ARIALBLK.ttf')  format('truetype'),
+     url('/fonts/ARIALBLK.svg') format('svg');
+}
+@font-face {
+    font-family: 'Arial Bold';
+    src: url('/fonts/ARIALBD.eot') format('embedded-opentype'), 
+     url('/fonts/ARIALBD.woff') format('woff'), 
+     url('/fonts/ARIALBD.ttf')  format('truetype'),
+     url('/fonts/ARIALBD.svg') format('svg');
+}
+@font-face {
+    font-family: 'Arial New';
+    src: url('/fonts/ARIAL.eot') format('embedded-opentype'), 
+     url('/fonts/ARIAL.woff') format('woff'), 
+     url('/fonts/ARIAL.ttf')  format('truetype'),
+     url('/fonts/ARIAL.svg') format('svg');
+}
+.IframeVideoBox{
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.IframeVideoBox iframe{
+    width: 100% !important;
+    height: 100% !important;
+}
+@import "tailwindcss/utilities";
