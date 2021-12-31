@@ -28,7 +28,9 @@ const api = {
     Login: async (payload) => apiGet('users/', payload),
     Register: async (payload) => apiPost('users', payload),
     Posts: async (payload) => apiGet('posts', payload),
-    getPost: async (id, payload) => apiGet(`posts/${id}`, payload)
+    getPost: async (id, payload) => apiGet(`posts/${id}`, payload),
+    getAllUsers: async (payload) => apiGet('users', payload)
+
   }
 }
 

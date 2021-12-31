@@ -19,13 +19,11 @@ export const RegisterScreen = (props) => {
       api.auth.Register({ email: email, password: password, confirmPassword: confirmPassword }).then(payload => {
       })
       navigate('/dashboard')
-    }
-    else{
+    } else {
       e.preventDefault()
       alert('Password doesnt match')
     }
   }
-
   return (
     <div className='h-full bg-gradient-to-tl from-blue-400 to-yellow-500 w-full py-16 px-4' style={{ minHeight: '100vh' }}>
       <div className='flex flex-col items-center justify-center'>
