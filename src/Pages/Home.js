@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import api from '../js/api'
 
 export const Home = () => {
@@ -20,10 +21,10 @@ export const Home = () => {
         {(posts !== '')
           ? posts.map(post => {
               return (
-                <a
+                <NavLink
                   key={post.id}
                   className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
-                  href=''
+                  to={`post/${post.id}`}
                 >
                   <span
                     className='absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'
@@ -58,7 +59,7 @@ export const Home = () => {
                       <dd className='text-xs text-gray-300'>{post.published}</dd>
                     </div>
                   </dl>
-                </a>
+                </NavLink>
               )
             })
           : ''}
