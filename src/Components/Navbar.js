@@ -7,7 +7,8 @@ export function Navbar () {
 
   const routes = [
     { path: '/dashboard', title: 'dashboard' },
-    { path: 'profile/2', title: 'profile' }
+    { path: 'profile/2', title: 'profile' },
+    { path: '/dashboard/post/new', title: 'new post' }
   ]
   return (
     <>

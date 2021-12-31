@@ -17,13 +17,15 @@ export const Home = () => {
   getData()
   return (
     <>
-      <div className='w-full flex flex-col justify-center items-center lg:w-10/12 mx-auto bg-gray-500 pt-10'>
+      <div className='w-full flex flex-col items-center lg:w-10/12 mx-auto bg-gray-500 pt-4 relative px-8'>
+        <h2 className='font-ArialBold text-gray-900 text-4xl'>YOUR POSTS</h2>
+
         {(posts !== '')
-          ? posts.map(post => {
+          ? posts.sort((a, b) => b.id - a.id).map(post => {
               return (
                 <NavLink
                   key={post.id}
-                  className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
+                  className='relative m-4 w-full bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
                   to={`post/${post.id}`}
                 >
                   <span

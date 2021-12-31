@@ -18,7 +18,7 @@ export const PrivateRouter = () => {
           <Route path='profile' element={<ShowUsers />} />
           <Route path='profile/:id' element={<Profile />} />
           <Route path='post/:id' element={<ShowPost />} />
-          <Route path='post/:new' element={<CreatePost />} />
+          <Route path='post/new' element={<CreatePost />} />
           <Route path='post/:new/edit' element={<CreatePost />} />
           <Route exact path='/' element={<Home />} />
         </Routes>

@@ -1,6 +1,6 @@
 {
-    "name": "Milwaukee Hub",
-    "short_name": "Hub",
+    "name": "React-blog",
+    "short_name": "React",
     "icons": [
         {
             "src": "/HUB_APP_ICON192.png",

@@ -29,13 +29,24 @@ const apiPost = async (url, payload) => {
 
     )
 }
-
+const apiPut = async (url, payload) => {
+  return axios.put(`${baseUrl}${url}`, payload)
+    .then(response => ({
+      success: true,
+      error: null,
+      data: response.data
+    }))
+    .catch(response => ({ success: false, error: response.json, data: null })
+    )
+}
 const api = {
   auth: {
     Login: async (payload) => apiGet('users/', payload),
     Register: async (payload) => apiPost('users', payload),
     Posts: async (payload) => apiGet('posts', payload),
+    createPost: async (payload) => apiPost('posts', payload),
     getPost: async (id, payload) => apiGet(`posts/${id}`, payload),
+    editPost: async (id, payload) => apiPut(`posts/${id}`, payload),
     deletePost: async (id, payload) => apiDelete(`posts/${id}`, payload),
     getAllUsers: async (payload) => apiGet('users', payload)
 
