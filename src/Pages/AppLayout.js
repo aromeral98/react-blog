@@ -1,10 +1,12 @@
 import React from 'react'
-import { Home } from './Home'
+import { PrivateRouter } from '../routers/PrivateRouter'
 
 export const AppLayout = () => {
   return (
-    <div>
-      <Home />
-    </div>
+    <>
+      <div className='h-full w-full'>
+        <PrivateRouter />
+      </div>
+    </>
   )
 }

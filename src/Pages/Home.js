@@ -1,7 +1,11 @@
 import React from 'react'
+import { Route, Router, Switch } from 'react-router-dom'
+import { Profile } from './Profile'
 
 export const Home = () => {
   return (
-    <div className='bg-black h-full w-full absolute' />
+    <>
+      
+    </>
   )
 }
