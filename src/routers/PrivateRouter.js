@@ -10,7 +10,7 @@ import { ShowUsers } from '../Pages/ShowUsers'
 
 export const PrivateRouter = () => {
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full '>
       <Navbar />
       <div className='h-full flex flex-row w-full pt-20 xl:pt-0 flex-grow '>
         <Sidebar />

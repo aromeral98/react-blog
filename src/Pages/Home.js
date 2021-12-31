@@ -43,7 +43,7 @@ export const Home = () => {
                     <div className='flex-shrink-0 hidden ml-3 sm:block'>
                       <img
                         className='object-cover w-16 h-16 rounded-lg shadow-sm'
-                        src='https://www.hyperui.dev/photos/man-5.jpeg'
+                        src={post.img}
                         alt=''
                       />
                     </div>

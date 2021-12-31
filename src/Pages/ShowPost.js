@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import api from '../js/api'
 
 export const ShowPost = (props) => {
@@ -48,7 +48,7 @@ export const ShowPost = (props) => {
           <div className='flex-shrink-0 hidden ml-3 sm:block'>
             <img
               className='object-cover w-16 h-16 rounded-lg shadow-sm'
-              src='https://www.hyperui.dev/photos/man-5.jpeg'
+              src={post.img}
               alt=''
             />
           </div>
