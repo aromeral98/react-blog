@@ -10,6 +10,13 @@ const apiGet = async (url, params) => {
     .catch(response => ({ success: false, error: response, data: null })
     )
 }
+const apiDelete = async (url, params) => {
+  return axios.delete(`${baseUrl}${url}?${queryString.stringify(params)}`)
+    .then(response => ({ success: true, error: null, data: response.data })
+    )
+    .catch(response => ({ success: false, error: response, data: null })
+    )
+}
 
 const apiPost = async (url, payload) => {
   return axios.post(`${baseUrl}${url}`, payload)
@@ -29,6 +36,7 @@ const api = {
     Register: async (payload) => apiPost('users', payload),
     Posts: async (payload) => apiGet('posts', payload),
     getPost: async (id, payload) => apiGet(`posts/${id}`, payload),
+    deletePost: async (id, payload) => apiDelete(`posts/${id}`, payload),
     getAllUsers: async (payload) => apiGet('users', payload)
 
   }

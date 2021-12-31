@@ -17,12 +17,12 @@ export const ShowUsers = () => {
   getData()
 
   return (
-    <div className='flex flex-col mx-auto'>
+    <div className='flex flex-col mx-auto py-10'>
       {(users !== '')
         ? users.map(user => {
             return (
               <div key={user.id} className='w-full h-full flex justify-center items-center'>
-                <div className='mx-auto justify-center items-center w-2/3 py-10'>
+                <div className='mx-auto justify-center items-center w-2/3  py-4'>
                   <div
                     className='rounded-lg shadow-lg bg-gray-600 w-full flex flex-row flex-wrap p-3 antialiased' style={{
                       backgroundImage: 'url(https://images.unsplash.com/photo-1578836537282-3171d77f8632?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)',
