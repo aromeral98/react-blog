@@ -1,19 +1,29 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import logo from '../img/logo.png'
+import api from '../js/api'
 
 export const RegisterScreen = (props) => {
   const [formValues, handleInputChange] = useForm({
+    username: 'alex',
     email: 'nando@gmail.com',
     password: '123456',
     confirmPassword: '123456'
   })
-
-  const { email, password, confirmPassword } = formValues
+  const navigate = useNavigate()
+  console.log(props)
+  const { username, email, password, confirmPassword } = formValues
   const handleLogin = (e) => {
-    e.preventDefault()
-    console.log(email, password, confirmPassword)
+    if (password === confirmPassword) {
+      api.auth.Register({ email: email, password: password, confirmPassword: confirmPassword }).then(payload => {
+      })
+      navigate('/dashboard')
+    }
+    else{
+      e.preventDefault()
+      alert('Password doesnt match')
+    }
   }
 
   return (
@@ -33,6 +43,10 @@ export const RegisterScreen = (props) => {
                 Log in here
               </Link>
             </p>
+            <div>
+              <label className='text-sm font-medium leading-none text-gray-800'>Username</label>
+              <input type='text' name='username' value={username} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+            </div>
             <div>
               <label className='text-sm font-medium leading-none text-gray-800'>Email</label>
               <input type='email' name='email' value={email} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
