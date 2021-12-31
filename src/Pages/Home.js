@@ -17,7 +17,7 @@ export const Home = () => {
   getData()
   return (
     <>
-      <div className='w-full flex flex-col justify-center items-center lg:w-8/12 mx-auto bg-gray-500'>
+      <div className='w-full flex flex-col justify-center items-center lg:w-10/12 mx-auto bg-gray-500 pt-10'>
         {(posts !== '')
           ? posts.map(post => {
               return (

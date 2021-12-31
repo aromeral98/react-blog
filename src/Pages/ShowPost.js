@@ -21,7 +21,7 @@ export const ShowPost = (props) => {
   }, [])
 
   return (
-    <div className='w-full flex flex-col justify-center items-center lg:w-8/12 mx-auto bg-gray-500 flex-grow overflow-y-auto'>
+    <div className='w-full flex flex-col lg:w-8/12 mx-auto flex-grow overflow-y-hidden'>
       <div
         className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
       >
