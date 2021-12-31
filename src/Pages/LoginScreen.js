@@ -24,12 +24,12 @@ export const LoginScreen = (props) => {
   const { email, password } = formValues
   const handleLogin = (e) => {
     e.preventDefault()
-    props.setUser({ name: email, password: password })
+    // props.setUser({ name: email, password: password })
   }
 
   console.log(props)
   return (
-    <div className='h-full flex-col flex bg-gradient-to-tl from-green-400 to-indigo-900 w-full py-16 px-4'>
+    <div className='h-full flex-col flex bg-gradient-to-tl from-blue-400 to-yellow-500 w-full py-16 px-4' style={{ minHeight: '100vh' }}>
       <div className='flex flex-col items-center justify-center '>
         <img className='h-20 ' src={logo} />
         <form className='w-full h-full flex justify-center' onSubmit={handleLogin}>

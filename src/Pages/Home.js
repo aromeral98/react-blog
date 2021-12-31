@@ -5,7 +5,9 @@ import { Profile } from './Profile'
 export const Home = () => {
   return (
     <>
-      
+     <div>
+      HOME COMPONENT
+    </div>
     </>
   )
 }

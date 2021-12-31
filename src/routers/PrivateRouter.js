@@ -8,10 +8,12 @@ export const PrivateRouter = () => {
   return (
     <div className='w-full h-full'>
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/profile' element={<Profile />} />
-      </Routes>
+      <div className='h-full w-full pt-20 xl:pt-0'>
+        <Routes>
+          <Route path='profile/:id' element={<Profile />} />
+          <Route exact path='/' element={<Home />} />
+        </Routes>
+      </div>
     </div>
   )
 }
