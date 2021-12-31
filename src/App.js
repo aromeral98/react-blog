@@ -1,15 +1,9 @@
 import React from 'react'
+import Provider from 'react-redux/lib/components/Provider'
 import './css/main.css'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
+import { AppRouter } from './routers/AppRouter'
 import configureStore from './js/redux/store'
-import LoginScreen from './Pages/LoginScreen'
-import { Provider } from 'react-redux'
-import RegisterScreen from './Pages/RegisterScreen'
-import { AppLayout } from './Pages/AppLayout'
+
 class App extends React.Component {
   constructor (Props) {
     super(Props)
@@ -35,19 +29,7 @@ class App extends React.Component {
     const { store } = configureStore(this.state.initialState)
     return (
       <Provider store={store}>
-        <Router>
-          <Switch>
-            <Route exact path='/'>
-              <LoginScreen />
-            </Route>
-            <Route path='/register'>
-              <RegisterScreen />
-            </Route>
-            <Route path='/dashboard'>
-              <AppLayout />
-            </Route>
-          </Switch>
-        </Router>
+        <AppRouter />
       </Provider>
     )
   }

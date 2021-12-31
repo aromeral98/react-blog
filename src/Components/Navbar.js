@@ -1,7 +1,14 @@
 import React, { useState } from 'react'
-export default function Navbar () {
+import { NavLink } from 'react-router-dom'
+
+export function Navbar () {
   const [show, setShow] = useState(null)
   const [profile, setProfile] = useState(false)
+
+  const routes = [
+    { path: '/dashboard', title: 'dashboard' },
+    { path: 'profile/2', title: 'profile' }
+  ]
   return (
     <>
       <div className='bg-gray-200 h-full w-full'>
@@ -11,77 +18,6 @@ export default function Navbar () {
             <div className='flex items-center justify-between'>
               <div className='inset-y-0 left-0 flex items-center xl:hidden'>
                 <div className='inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-100 focus:outline-none transition duration-150 ease-in-out'>
-                  <div className='visible xl:hidden'>
-                    <ul className='p-2 border-r bg-white absolute rounded left-0 right-0 shadow mt-8 md:mt-8 hidden'>
-                      <li className='flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none'>
-                        <div className='flex items-center'>
-                          <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-grid' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                            <path stroke='none' d='M0 0h24v24H0z' />
-                            <rect x={4} y={4} width={6} height={6} rx={1} />
-                            <rect x={14} y={4} width={6} height={6} rx={1} />
-                            <rect x={4} y={14} width={6} height={6} rx={1} />
-                            <rect x={14} y={14} width={6} height={6} rx={1} />
-                          </svg>
-                          <span className='ml-2 font-bold'>Dashboard</span>
-                        </div>
-                      </li>
-                      <li className='xl:hidden flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center'>
-                        <div className='flex items-center'>
-                          <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-puzzle' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                            <path stroke='none' d='M0 0h24v24H0z' />
-                            <path d='M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1' />
-                          </svg>
-                          <span className='ml-2 font-bold'>Products</span>
-                        </div>
-                      </li>
-                      <li className='xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none'>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-compass' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                          <path stroke='none' d='M0 0h24v24H0z' />
-                          <polyline points='8 16 10 10 16 8 14 14 8 16' />
-                          <circle cx={12} cy={12} r={9} />
-                        </svg>
-                        <span className='ml-2 font-bold'>Performance</span>
-                      </li>
-                      <li className='border-b border-gray-300 xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none'>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-code' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                          <path stroke='none' d='M0 0h24v24H0z' />
-                          <polyline points='7 8 3 12 7 16' />
-                          <polyline points='17 8 21 12 17 16' />
-                          <line x1={14} y1={4} x2={10} y2={20} />
-                        </svg>
-                        <span className='ml-2 font-bold'>Deliverables</span>
-                      </li>
-                      <li className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none'>
-                        <div className='flex items-center'>
-                          <div className='w-12 cursor-pointer flex text-sm border-2 border-transparent rounded focus:outline-none focus:border-white transition duration-150 ease-in-out'>
-                            <img className='rounded h-10 w-10 object-cover' src='https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_1.png' alt='logo' />
-                          </div>
-                          <p className='text-sm ml-2 cursor-pointer'>Jane Doe</p>
-                          <div className='sm:ml-2 text-white relative'>
-                            <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-chevron-down cursor-pointer' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                              <path stroke='none' d='M0 0h24v24H0z' />
-                              <polyline points='6 9 12 15 18 9' />
-                            </svg>
-                          </div>
-                        </div>
-                      </li>
-                      <li className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none'>
-                        <div className='flex items-center'>
-                          <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-user' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                            <path stroke='none' d='M0 0h24v24H0z' />
-                            <circle cx={12} cy={7} r={4} />
-                            <path d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' />
-                          </svg>
-                          <span className='ml-2'>Profile</span>
-                        </div>
-                      </li>
-                    </ul>
-                    <svg onclick='MenuHandler(this,true)' aria-haspopup='true' aria-label='Main Menu' xmlns='http://www.w3.org/2000/svg' className='show-m-menu icon icon-tabler icon-tabler-menu' width={28} height={28} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                      <path stroke='none' d='M0 0h24v24H0z' />
-                      <line x1={4} y1={8} x2={20} y2={8} />
-                      <line x1={4} y1={16} x2={20} y2={16} />
-                    </svg>
-                  </div>
                   <div className='hidden close-m-menu text-gray-700' onclick='MenuHandler(this,false)'>
                     <svg aria-label='Close' xmlns='http://www.w3.org/2000/svg' width={24} height={24} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
                       <path stroke='none' d='M0 0h24v24H0z' />
@@ -106,84 +42,34 @@ export default function Navbar () {
               </div>
               <div className='flex'>
                 <div className='hidden xl:flex md:mr-6 xl:mr-16'>
-                  <a href='javascript: void(0)' className='flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
-                    <span className='mr-2'>
-                      <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-grid' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                        <path stroke='none' d='M0 0h24v24H0z' />
-                        <rect x={4} y={4} width={6} height={6} rx={1} />
-                        <rect x={14} y={4} width={6} height={6} rx={1} />
-                        <rect x={4} y={14} width={6} height={6} rx={1} />
-                        <rect x={14} y={14} width={6} height={6} rx={1} />
-                      </svg>
-                    </span>
-                    Dashboard
-                  </a>
-                  <a href='javascript: void(0)' className='flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
-                    <span className='mr-2'>
-                      <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-puzzle' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                        <path stroke='none' d='M0 0h24v24H0z' />
-                        <path d='M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1' />
-                      </svg>
-                    </span>
-                    Products
-                  </a>
-                  <a href='javascript: void(0)' className='flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
-                    <span className='mr-2'>
-                      <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-compass' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                        <path stroke='none' d='M0 0h24v24H0z' />
-                        <polyline points='8 16 10 10 16 8 14 14 8 16' />
-                        <circle cx={12} cy={12} r={9} />
-                      </svg>
-                    </span>
-                    Performance
-                  </a>
-                  <a href='javascript: void(0)' className='flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
-                    <span className='mr-2'>
-                      <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-code' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                        <path stroke='none' d='M0 0h24v24H0z' />
-                        <polyline points='7 8 3 12 7 16' />
-                        <polyline points='17 8 21 12 17 16' />
-                        <line x1={14} y1={4} x2={10} y2={20} />
-                      </svg>
-                    </span>
-                    Deliverables
-                  </a>
+                  {routes.map(route => {
+                    return (
+                      <NavLink key={route.title} to={route.path} className='capitalize flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-indigo-400 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
+                        {route.title}
+                      </NavLink>
+                    )
+                  })}
                 </div>
                 <div className='hidden xl:flex items-center'>
-                  <div className='relative md:mr-6 my-2'>
-                    <button className='focus:outline-none bg-gray-100 border-gray-300 border transition duration-150 ease-in-out hover:bg-gray-300 rounded text-gray-600 px-5 py-2 text-xs'>Manage</button>
-                  </div>
+
                   <div className='ml-6 relative'>
                     <div className='flex items-center relative' onClick={() => setProfile(!profile)}>
                       {profile && (
-                        <ul className='p-2 w-40 border-r bg-white absolute rounded right-0 shadow top-0 mt-16 '>
+                        <ul className='p-2 w-40 border-r bg-white absolute z-10 rounded right-0 shadow top-0 mt-16 '>
                           <li className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none'>
                             <div className='flex items-center'>
-                              <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-user' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                                <path stroke='none' d='M0 0h24v24H0z' />
-                                <circle cx={12} cy={7} r={4} />
-                                <path d='M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2' />
-                              </svg>
+                              <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z' /></svg>
                               <span className='ml-2'>My Profile</span>
                             </div>
                           </li>
-                          <li className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center'>
-                            <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-help' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                              <path stroke='none' d='M0 0h24v24H0z' />
-                              <circle cx={12} cy={12} r={9} />
-                              <line x1={12} y1={17} x2={12} y2='17.01' />
-                              <path d='M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4' />
-                            </svg>
-                            <span className='ml-2'>Help Center</span>
-                          </li>
                           <li className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none'>
-                            <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-settings' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                              <path stroke='none' d='M0 0h24v24H0z' />
-                              <path d='M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z' />
-                              <circle cx={12} cy={12} r={3} />
-                            </svg>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 13.616v-3.232c-1.651-.587-2.694-.752-3.219-2.019v-.001c-.527-1.271.1-2.134.847-3.707l-2.285-2.285c-1.561.742-2.433 1.375-3.707.847h-.001c-1.269-.526-1.435-1.576-2.019-3.219h-3.232c-.582 1.635-.749 2.692-2.019 3.219h-.001c-1.271.528-2.132-.098-3.707-.847l-2.285 2.285c.745 1.568 1.375 2.434.847 3.707-.527 1.271-1.584 1.438-3.219 2.02v3.232c1.632.58 2.692.749 3.219 2.019.53 1.282-.114 2.166-.847 3.707l2.285 2.286c1.562-.743 2.434-1.375 3.707-.847h.001c1.27.526 1.436 1.579 2.019 3.219h3.232c.582-1.636.75-2.69 2.027-3.222h.001c1.262-.524 2.12.101 3.698.851l2.285-2.286c-.744-1.563-1.375-2.433-.848-3.706.527-1.271 1.588-1.44 3.221-2.021zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z' /></svg>
                             <span className='ml-2'>Account Settings</span>
                           </li>
+                          <NavLink to='/' className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center'>
+                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M10 2v2h12v16h-12v2h14v-20h-14zm0 7.408l2.963 2.592-2.963 2.592v-1.592h-8v-2h8v-1.592zm-2-4.408v4h-8v6h8v4l8-7-8-7z' /></svg>
+                            <span className='ml-2'>Log Out</span>
+                          </NavLink>
                         </ul>
                       )}
                       <div className='cursor-pointer flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out'>
@@ -215,20 +101,16 @@ export default function Navbar () {
               </svg>
             </div>
             <div className='flex items-center'>
-              <div className='relative mr-6 '>
-                <button className='focus:outline-none bg-gray-100 border-gray-300 border transition duration-150 ease-in-out hover:bg-gray-300 rounded text-gray-600 px-5 py-2 text-xs'>Manage</button>
-              </div>
               <div id='menu' className='text-gray-800' onClick={() => setShow(!show)}>
                 {show
-                  ? (
-                      ''
-                    ) : (
-                      <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-menu-2' width={24} height={24} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                        <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                        <line x1={4} y1={6} x2={20} y2={6} />
-                        <line x1={4} y1={12} x2={20} y2={12} />
-                        <line x1={4} y1={18} x2={20} y2={18} />
-                      </svg>
+                  ? ''
+                  : (
+                    <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-menu-2' width={24} height={24} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
+                      <path stroke='none' d='M0 0h24v24H0z' fill='none' />
+                      <line x1={4} y1={6} x2={20} y2={6} />
+                      <line x1={4} y1={12} x2={20} y2={12} />
+                      <line x1={4} y1={18} x2={20} y2={18} />
+                    </svg>
                     )}
               </div>
             </div>
@@ -377,3 +259,4 @@ export default function Navbar () {
     </>
   )
 }
+export default Navbar
