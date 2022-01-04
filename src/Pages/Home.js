@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import api from '../js/api'
 
@@ -14,7 +14,10 @@ export const Home = () => {
       }
     })
   }
-  getData()
+
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <>
       <div className='w-full flex flex-col items-center lg:w-10/12 mx-auto bg-gray-500 pt-4 relative px-8'>

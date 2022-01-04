@@ -41,7 +41,7 @@ const apiPut = async (url, payload) => {
 }
 const api = {
   auth: {
-    Login: async (payload) => apiGet('users/', payload),
+    Login: async (payload) => apiGet(`users/?email=${payload.email}&password=${payload.password}`, payload),
     Register: async (payload) => apiPost('users', payload),
     Posts: async (payload) => apiGet('posts', payload),
     createPost: async (payload) => apiPost('posts', payload),

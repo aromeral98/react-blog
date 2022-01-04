@@ -19,6 +19,7 @@ export const ShowPost = (props) => {
   useEffect(() => {
     getPost()
   }, [])
+  
   function handleOnDelete () {
     api.auth.deletePost(params.id).then(response => {
       if (response.success === true) {
