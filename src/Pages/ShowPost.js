@@ -7,9 +7,9 @@ export const ShowPost = (props) => {
   const params = useParams()
   const navigate = useNavigate()
   function getPost () {
+
     api.auth.getPost(params.id).then(response => {
       if (response.success === true) {
-        console.log(response)
         setPost(response.data)
       } else {
         return ''
@@ -19,7 +19,7 @@ export const ShowPost = (props) => {
   useEffect(() => {
     getPost()
   }, [])
-  
+
   function handleOnDelete () {
     api.auth.deletePost(params.id).then(response => {
       if (response.success === true) {

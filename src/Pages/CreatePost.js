@@ -12,13 +12,11 @@ export const CreatePost = (props) => {
     description: ''
   })
   const navigate = useNavigate()
-  console.log(props)
   const { title, description } = formValues
 
   function getPost () {
     api.auth.getPost(params.new).then(response => {
       if (response.success === true) {
-        console.log(response)
         setPost(response.data)
       } else {
         return ''
@@ -28,10 +26,11 @@ export const CreatePost = (props) => {
   useEffect(() => {
     getPost()
   }, [])
+
   function handleOnSubmit (e) {
     e.preventDefault()
-    api.auth.createPost({ title: title, description: description, author: post.author, published: now })
-    alert('POST CREATED DONE')
+    api.auth.createPost({ title: title, description: description, author: post.author, published: now, author_id: parseInt(localStorage.getItem('id')), img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
+    alert('POST CREATED SUCCESFULLY')
     navigate('/dashboard')
   }
   function handleOnSubmitEdit (e) {
@@ -40,7 +39,6 @@ export const CreatePost = (props) => {
     navigate(`/dashboard/post/${params.new}`)
   }
 
-  console.log(params.new)
   return (
     <form className='w-full h-full flex justify-center mb-10 px-4' onSubmit={(params.new === undefined) ? handleOnSubmit : handleOnSubmitEdit}>
       <div className='bg-white shadow rounded lg:w-2/3  md:w-1/2 w-full  p-10 mt-16'>

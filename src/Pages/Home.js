@@ -24,7 +24,7 @@ export const Home = () => {
         <h2 className='font-ArialBold text-gray-900 text-4xl'>YOUR POSTS</h2>
 
         {(posts !== '')
-          ? posts.sort((a, b) => b.id - a.id).map(post => {
+          ? posts.filter(post => post.author_id === parseInt(localStorage.getItem('id'))).sort((a, b) => b.id - a.id).map(post => {
               return (
                 <NavLink
                   key={post.id}
@@ -59,9 +59,9 @@ export const Home = () => {
                   </div>
 
                   <dl className='flex mt-6'>
-                    <div className='flex flex-col-reverse'>
-                      <dt className='text-sm font-medium text-gray-400'>Published</dt>
-                      <dd className='text-xs text-gray-300'>{post.published}</dd>
+                    <div className='flex flex-row '>
+                      <dt className='text-sm font-medium text-gray-400'>Published:</dt>
+                      <dd className='text-sm text-gray-300 ml-2'>{post.published}</dd>
                     </div>
                   </dl>
                 </NavLink>
