@@ -30,7 +30,7 @@ export const ShowPost = (props) => {
   }
 
   return (
-    <div className='w-full flex flex-col lg:w-8/12 mx-auto flex-grow overflow-y-hidden'>
+    <div className='w-full flex flex-col lg:w-8/12 mx-auto flex-grow overflow-y-hidden animate__animated animate__fadeInRightBig'>
       <div
         className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg min-h-86'
       >

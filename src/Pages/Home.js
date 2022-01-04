@@ -20,7 +20,7 @@ export const Home = () => {
   }, [])
   return (
     <>
-      <div className='w-full flex flex-col items-center lg:w-10/12 mx-auto bg-gray-500 pt-4 relative px-8'>
+      <div className='w-full flex flex-col items-center lg:w-10/12 mx-auto bg-gray-500 pt-4 relative px-8 animate__animated animate__fadeInRightBig'>
         <h2 className='font-ArialBold text-gray-900 text-4xl'>YOUR POSTS</h2>
 
         {(posts !== '')

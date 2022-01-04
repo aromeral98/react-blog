@@ -48,8 +48,8 @@ const api = {
     getPost: async (id, payload) => apiGet(`posts/${id}`, payload),
     editPost: async (id, payload) => apiPut(`posts/${id}`, payload),
     deletePost: async (id, payload) => apiDelete(`posts/${id}`, payload),
-    getAllUsers: async (payload) => apiGet('users', payload)
-
+    getAllUsers: async (payload) => apiGet('users', payload),
+    getUserInfo: async (id, payload) => apiGet(`users/${id}`, payload)
   }
 }
 

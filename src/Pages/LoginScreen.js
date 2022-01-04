@@ -30,10 +30,11 @@ export const LoginScreen = (props) => {
     e.preventDefault()
     api.auth.Login({ email: email, password: password })
       .then(response => {
-        console.log(response)
+        console.log(response.data)
         if (response.data.length < 1) {
           setEmailError("Email doesn't exist on database")
         } else if (response.data[0].email === email && response.data[0].password === password) {
+          localStorage.setItem('id', response.data[0].id)
           navigate('/dashboard')
         }
       })
@@ -59,7 +60,7 @@ export const LoginScreen = (props) => {
             </p>
             <div>
               <label className='text-sm font-medium leading-none text-gray-800'>Email</label>
-              <input name='email' value={email} onChange={handleInputChange} aria-label='enter email adress' type='email' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              <input required name='email' value={email} onChange={handleInputChange} aria-label='enter email adress' type='email' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
               {(emailError !== false)
                 ? <label className='text-sm font-medium leading-none text-red-700'>{emailError}</label>
                 : ''
@@ -68,7 +69,7 @@ export const LoginScreen = (props) => {
             <div className='mt-6  w-full'>
               <label className='text-sm font-medium leading-none text-gray-800'>Password</label>
               <div className='relative flex items-center justify-center'>
-                <input name='password' value={password} onChange={handleInputChange} aria-label='enter Password' type='password' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+                <input required name='password' value={password} onChange={handleInputChange} aria-label='enter Password' type='password' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
                 <div className='absolute right-0 mt-2 mr-3 cursor-pointer'>
                   <svg width={16} height={16} viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path

@@ -18,7 +18,7 @@ export const ShowUsers = () => {
     getData()
 }, [])
   return (
-    <div className='w-full h-full flex flex-row flex-wrap flex-grow overflow-y-auto mx-auto py-10'>
+    <div className='w-full h-full flex flex-row flex-wrap flex-grow overflow-y-auto mx-auto py-10 animate__animated animate__fadeInRightBig'>
       {(users !== '')
         ? users.map((user, index) => {
             return (

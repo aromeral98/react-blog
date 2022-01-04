@@ -4,7 +4,7 @@ import logoNav from '../img/logo.png'
 
 function Sidebar () {
   return (
-    <div className='hidden lg:flex h-auto'>
+    <div className='hidden lg:flex h-full fixed '>
       {/* Sidebar starts */}
       {/* Remove class [ hidden ] and replace [ sm:flex ] with [ flex ] */}
       <div className='w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex'>
