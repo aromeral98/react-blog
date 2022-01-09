@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import logo from '../img/logo.png'
 import api from '../js/api'
 
 export const RegisterScreen = (props) => {
+  const [errPassword, setErrPassword] = useState(false)
+  const [errEmail, setErrEmail] = useState(false)
   const [formValues, handleInputChange] = useForm({
     username: 'alex',
     email: 'nando@gmail.com',
@@ -13,21 +15,31 @@ export const RegisterScreen = (props) => {
   })
   const navigate = useNavigate()
   console.log(props)
-  const { username, email, password, confirmPassword } = formValues
+  const { username, email, password, confirmPassword, img } = formValues
   const handleLogin = (e) => {
-    if (password === confirmPassword) {
-      api.auth.Register({ email: email, password: password, confirmPassword: confirmPassword }).then(payload => {
+    setErrEmail(false)
+    setErrPassword(false)
+    e.preventDefault()
+    api.auth.Login({ email: email, password: password })
+      .then(response => {
+        if (response.data?.length < 1) {
+          if (password === confirmPassword) {
+            api.auth.Register({ username: username, email: email, password: password, confirmPassword: confirmPassword, img: img, created_at: new Date() }).then(payload => {
+              navigate('/')
+            })
+          } else {
+            setErrPassword("Passwords doesn't match")
+          }
+        } else {
+          setErrEmail('Email already exist on database')
+        }
       })
-      navigate('/dashboard')
-    } else {
-      e.preventDefault()
-      alert('Password doesnt match')
-    }
   }
+
   return (
     <div className='h-full bg-gradient-to-tl from-blue-400 to-yellow-500 w-full py-16 px-4' style={{ minHeight: '100vh' }}>
       <div className='flex flex-col items-center justify-center'>
-        <img className='h-20 ' src={logo} />
+        <img className='h-20' alt='logo' src={logo} />
         <form className='w-full h-full flex justify-center' onSubmit={handleLogin}>
           <div className='bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16'>
             <p tabIndex={0} role='heading' aria-label='Login to your account' className='text-2xl font-extrabold leading-6 text-gray-800'>
@@ -41,18 +53,26 @@ export const RegisterScreen = (props) => {
                 Log in here
               </Link>
             </p>
-            <div>
+            <div className='mt-3  w-full'>
               <label className='text-sm font-medium leading-none text-gray-800'>Username</label>
-              <input type='text' name='username' value={username} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              <input required type='text' name='username' value={username} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
             </div>
-            <div>
+            <div className='mt-3  w-full'>
               <label className='text-sm font-medium leading-none text-gray-800'>Email</label>
-              <input type='email' name='email' value={email} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              <input required type='email' name='email' value={email} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              {(errEmail !== false)
+                ? <label className='text-sm font-medium leading-none text-red-700 pt-1'>{errEmail}</label>
+                : ''
+              }
+            </div>
+            <div className='mt-3  w-full'>
+              <label className='text-sm font-medium leading-none text-gray-800'>Profile Image</label>
+              <input required type='img' name='img' value={img} onChange={handleInputChange} placeholder='Introduce an url' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
             </div>
             <div className='mt-3  w-full'>
               <label className='text-sm font-medium leading-none text-gray-800'>Password</label>
               <div className='relative flex items-center justify-center'>
-                <input type='password' name='password' value={password} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+                <input required type='password' name='password' value={password} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
                 <div className='absolute right-0 mt-2 mr-3 cursor-pointer'>
                   <svg width={16} height={16} viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path
@@ -65,8 +85,12 @@ export const RegisterScreen = (props) => {
             </div>
             <div className='mt-3  w-full'>
               <label className='text-sm font-medium leading-none text-gray-800 pt-2'>Confirm Password</label>
-              <div className='relative flex items-center justify-center'>
-                <input aria-label='Confirm password' name='confirmPassword' value={confirmPassword} onChange={handleInputChange} type='password' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              <div className='relative flex flex-col'>
+                <input required aria-label='Confirm password' name='confirmPassword' value={confirmPassword} onChange={handleInputChange} type='password' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+                {(errPassword !== false)
+                  ? <label className='text-sm font-medium leading-none text-red-700 pt-1'>{errPassword}</label>
+                  : ''
+                }
                 <div className='absolute right-0 mt-2 mr-3 cursor-pointer'>
                   <svg width={16} height={16} viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path

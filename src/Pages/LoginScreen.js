@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { setUser } from '../js/redux/actions/AuthActions'
 import { useForm } from '../hooks/useForm'
 import logo from '../img/logo.png'
+import api from '../js/api'
+
 const mapStateToProps = (state, props) => {
   return {
     user: state.user
@@ -16,14 +18,26 @@ function mapDispatchToProps (dispatch) {
 }
 
 export const LoginScreen = (props) => {
+  const [emailError, setEmailError] = useState(false)
+
   const [formValues, handleInputChange] = useForm({
     email: 'nando@gmail.com',
     password: '123456'
   })
-
+  const navigate = useNavigate()
   const { email, password } = formValues
   const handleLogin = (e) => {
     e.preventDefault()
+    api.auth.Login({ email: email, password: password })
+      .then(response => {
+        console.log(response.data)
+        if (response.data?.length < 1) {
+          setEmailError("Email doesn't exist on database")
+        } else if (response.data?.[0].email === email && response.data[0].password === password) {
+          localStorage.setItem('id', response.data[0].id)
+          navigate('/dashboard')
+        }
+      })
     // props.setUser({ name: email, password: password })
   }
 
@@ -46,12 +60,16 @@ export const LoginScreen = (props) => {
             </p>
             <div>
               <label className='text-sm font-medium leading-none text-gray-800'>Email</label>
-              <input name='email' value={email} onChange={handleInputChange} aria-label='enter email adress' type='email' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              <input required name='email' value={email} onChange={handleInputChange} aria-label='enter email adress' type='email' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+              {(emailError !== false)
+                ? <label className='text-sm font-medium leading-none text-red-700'>{emailError}</label>
+                : ''
+              }
             </div>
             <div className='mt-6  w-full'>
               <label className='text-sm font-medium leading-none text-gray-800'>Password</label>
               <div className='relative flex items-center justify-center'>
-                <input name='password' value={password} onChange={handleInputChange} aria-label='enter Password' type='password' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
+                <input required name='password' value={password} onChange={handleInputChange} aria-label='enter Password' type='password' className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />
                 <div className='absolute right-0 mt-2 mr-3 cursor-pointer'>
                   <svg width={16} height={16} viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
                     <path

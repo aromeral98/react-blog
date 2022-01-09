@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import api from '../js/api'
 
 export const ShowPost = (props) => {
   const [post, setPost] = useState('')
   const params = useParams()
+  const navigate = useNavigate()
 
-  function getPost () {
+  useEffect(() => {
     api.auth.getPost(params.id).then(response => {
       if (response.success === true) {
-        console.log(response)
         setPost(response.data)
       } else {
         return ''
       }
     })
+  }, [params.id])
+
+  function handleOnDelete () {
+    api.auth.deletePost(params.id).then(response => {
+      if (response.success === true) {
+        alert('POST DELETED DONE')
+        navigate('/dashboard')
+      }
+    })
   }
-  useEffect(() => {
-    getPost()
-  }, [])
 
   return (
-    <div className='w-full flex flex-col lg:w-8/12 mx-auto flex-grow overflow-y-hidden'>
+    <div className='w-full flex flex-col lg:w-8/12 mx-auto flex-grow overflow-y-hidden animate__animated animate__fadeInRightBig'>
       <div
-        className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
+        className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg min-h-86'
       >
         <span
           className='absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'
@@ -40,7 +46,7 @@ export const ShowPost = (props) => {
           <div className='flex-shrink-0 hidden ml-3 sm:block'>
             <img
               className='object-cover w-16 h-16 rounded-lg shadow-sm'
-              src='https://www.hyperui.dev/photos/man-5.jpeg'
+              src={post.img}
               alt=''
             />
           </div>
@@ -50,14 +56,17 @@ export const ShowPost = (props) => {
           <p className='text-sm text-gray-200'>{post.description}</p>
         </div>
 
-        <div className='flex flex-row justify-between'>
-          <dl className='flex mt-4'>
-            <div className='flex flex-col'>
-              <dt className='text-sm font-medium text-gray-400'>Published</dt>
-              <dd className='text-xs text-gray-300'>{post.published}</dd>
-            </div>
-          </dl>
-          <Link to='/dashboard' className='bg-indigo-400 py-4 px-4 items-center '>Back</Link>
+        <dl className='flex mt-4'>
+          <div className='flex flex-col'>
+            <dt className='text-sm font-medium text-gray-400'>Published</dt>
+            <dd className='text-xs text-gray-300'>{post.published}</dd>
+          </div>
+        </dl>
+        <div className='absolute right-0 bottom-0 mb-4 mr-6'>
+          <Link to='/dashboard' className='bg-indigo-400 py-2 px-4 items-center '>Back</Link>
+          <Link to='edit' className='bg-white py-2 px-4 items-center mx-2'>Edit</Link>
+          <button onClick={() => handleOnDelete()} className='bg-red-600 py-4 px-4 items-center mx-2'>Destroy</button>
+
         </div>
       </div>
 

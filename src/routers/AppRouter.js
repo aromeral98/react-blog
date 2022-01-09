@@ -7,7 +7,7 @@ import RegisterScreen from '../Pages/RegisterScreen'
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <div className='w-full h-full'>
+      <div className='w-full min-h-full'>
         <Routes>
           <Route path='/' element={<LoginScreen />} />
           <Route path='/register' element={<RegisterScreen />} />

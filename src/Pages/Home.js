@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import api from '../js/api'
 
@@ -14,16 +14,21 @@ export const Home = () => {
       }
     })
   }
-  getData()
+
+  useEffect(() => {
+    getData()
+  }, [])
   return (
     <>
-      <div className='w-full flex flex-col justify-center items-center lg:w-10/12 mx-auto bg-gray-500 pt-10'>
+      <div className='w-full flex flex-col items-center lg:w-10/12 mx-auto bg-gray-500 pt-4 relative px-8 animate__animated animate__fadeInRightBig'>
+        <h2 className='font-ArialBold text-gray-900 text-4xl'>YOUR POSTS</h2>
+
         {(posts !== '')
-          ? posts.map(post => {
+          ? posts.filter(post => post.author_id === parseInt(localStorage.getItem('id'))).sort((a, b) => b.id - a.id).map(post => {
               return (
                 <NavLink
                   key={post.id}
-                  className='relative m-4 bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
+                  className='relative m-4 w-full bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
                   to={`post/${post.id}`}
                 >
                   <span
@@ -41,7 +46,7 @@ export const Home = () => {
                     <div className='flex-shrink-0 hidden ml-3 sm:block'>
                       <img
                         className='object-cover w-16 h-16 rounded-lg shadow-sm'
-                        src='https://www.hyperui.dev/photos/man-5.jpeg'
+                        src={post.img}
                         alt=''
                       />
                     </div>
@@ -54,9 +59,9 @@ export const Home = () => {
                   </div>
 
                   <dl className='flex mt-6'>
-                    <div className='flex flex-col-reverse'>
-                      <dt className='text-sm font-medium text-gray-400'>Published</dt>
-                      <dd className='text-xs text-gray-300'>{post.published}</dd>
+                    <div className='flex flex-row '>
+                      <dt className='text-sm font-medium text-gray-400'>Published:</dt>
+                      <dd className='text-sm text-gray-300 ml-2'>{post.published}</dd>
                     </div>
                   </dl>
                 </NavLink>
