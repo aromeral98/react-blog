@@ -13,7 +13,7 @@ export const PrivateRouter = () => {
     <div className='w-full h-full'>
       <Navbar />
       <Sidebar />
-      <div className='h-full flex flex-row w-full flex-grow lg:pl-80 mt-16'>
+      <div className='flex flex-row w-full flex-grow lg:pl-80 mt-16'>
         <Routes>
           <Route path='profile' element={<ShowUsers />} />
           <Route path='profile/:id' element={<Profile />} />

@@ -1,4 +1,4 @@
-import React, { useEffect , useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
 import logoNav from '../img/logo.png'
@@ -11,7 +11,8 @@ function Sidebar () {
   function getData () {
     api.auth.Posts().then(response => {
       if (response.success === true) {
-        setPosts(response.data)
+        console.log(response.data)
+        setPosts(response.data.filter(post => post.author_id === parseInt(localStorage.getItem('id'))))
       } else {
         return ''
       }
@@ -39,7 +40,7 @@ function Sidebar () {
       <div className='w-64 absolute sm:relative bg-gray-800 shadow md:h-full flex-col justify-between hidden sm:flex'>
         <div className=''>
           <div className='bg-transparent mt-6 px-6'>
-            <img className='bg-transparent' src={logoNav} />
+            <img className='bg-transparent' alt='logo' src={logoNav} />
           </div>
           <ul className='mt-4'>
             <NavLink to='profile' className='flex w-full justify-between text-gray-300 hover:text-gray-500 cursor-pointer items-center border-b border-t py-2 border-white px-3'>

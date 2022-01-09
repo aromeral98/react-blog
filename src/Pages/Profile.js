@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect , useState } from 'react'
+
 import api from '../js/api'
 export const Profile = () => {
-  const [userInfo,setUserInfo] = useState(false)
-  const getUser = localStorage.getItem('id')
+  const [userInfo, setUserInfo] = useState(false)
+
   useEffect(() => {
-    api.auth.getUserInfo(getUser).then(response=>{
+    const getUser = localStorage.getItem('id')
+    api.auth.getUserInfo(getUser).then(response => {
       setUserInfo(response.data)
     })
   }, [])
-  
 
   return (
     <div className='w-full h-full flex justify-center capitalize'>
@@ -23,7 +23,7 @@ export const Profile = () => {
           }}
         >
           <div className='md:w-1/3 w-full'>
-            <img className='rounded-lg shadow-lg antialiased' src={userInfo.img} />
+            <img alt='' className='rounded-lg shadow-lg antialiased' src={userInfo.img} />
           </div>
           <div className='md:w-2/3 w-full px-3 flex flex-row flex-wrap'>
             <div className='w-full text-right text-gray-700 font-semibold relative pt-3 md:pt-0'>

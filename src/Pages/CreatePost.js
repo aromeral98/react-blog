@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
 import api from '../js/api'
 
@@ -14,7 +14,7 @@ export const CreatePost = (props) => {
   const navigate = useNavigate()
   const { title, description } = formValues
 
-  function getPost () {
+  useEffect(() => {
     api.auth.getPost(params.new).then(response => {
       if (response.success === true) {
         setPost(response.data)
@@ -22,14 +22,11 @@ export const CreatePost = (props) => {
         return ''
       }
     })
-  }
-  useEffect(() => {
-    getPost()
-  }, [])
+  }, [params.new])
 
   function handleOnSubmit (e) {
     e.preventDefault()
-    api.auth.createPost({ title: title, description: description, author: post.author, published: now, author_id: parseInt(localStorage.getItem('id')), img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
+    api.auth.createPost({ title: title, description: description, author: localStorage.getItem('username'), published: now, author_id: parseInt(localStorage.getItem('id')), img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
     alert('POST CREATED SUCCESFULLY')
     navigate('/dashboard')
   }
@@ -40,8 +37,8 @@ export const CreatePost = (props) => {
   }
 
   return (
-    <form className='w-full h-full flex justify-center mb-10 px-4' onSubmit={(params.new === undefined) ? handleOnSubmit : handleOnSubmitEdit}>
-      <div className='bg-white shadow rounded lg:w-2/3  md:w-1/2 w-full  p-10 mt-16'>
+    <form className='w-full flex justify-center mb-10 px-4' onSubmit={(params.new === undefined) ? handleOnSubmit : handleOnSubmitEdit}>
+      <div className='bg-white  shadow rounded lg:w-2/3  md:w-1/2 w-full  p-10 mt-16'>
         <div>
           <label className='text-sm font-medium leading-none text-gray-800'>Title</label>
           <input type='text' name='title' value={title} onChange={handleInputChange} className='bg-gray-200 border rounded focus:outline-none text-xs font-medium leading-none text-gray-800 py-3 w-full pl-3 mt-2' />

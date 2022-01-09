@@ -6,8 +6,8 @@ export const ShowPost = (props) => {
   const [post, setPost] = useState('')
   const params = useParams()
   const navigate = useNavigate()
-  function getPost () {
 
+  useEffect(() => {
     api.auth.getPost(params.id).then(response => {
       if (response.success === true) {
         setPost(response.data)
@@ -15,10 +15,7 @@ export const ShowPost = (props) => {
         return ''
       }
     })
-  }
-  useEffect(() => {
-    getPost()
-  }, [])
+  }, [params.id])
 
   function handleOnDelete () {
     api.auth.deletePost(params.id).then(response => {

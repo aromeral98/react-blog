@@ -31,9 +31,9 @@ export const LoginScreen = (props) => {
     api.auth.Login({ email: email, password: password })
       .then(response => {
         console.log(response.data)
-        if (response.data.length < 1) {
+        if (response.data?.length < 1) {
           setEmailError("Email doesn't exist on database")
-        } else if (response.data[0].email === email && response.data[0].password === password) {
+        } else if (response.data?.[0].email === email && response.data[0].password === password) {
           localStorage.setItem('id', response.data[0].id)
           navigate('/dashboard')
         }

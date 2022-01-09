@@ -22,7 +22,7 @@ export const RegisterScreen = (props) => {
     e.preventDefault()
     api.auth.Login({ email: email, password: password })
       .then(response => {
-        if (response.data.length < 1) {
+        if (response.data?.length < 1) {
           if (password === confirmPassword) {
             api.auth.Register({ username: username, email: email, password: password, confirmPassword: confirmPassword, img: img, created_at: new Date() }).then(payload => {
               navigate('/')
@@ -39,7 +39,7 @@ export const RegisterScreen = (props) => {
   return (
     <div className='h-full bg-gradient-to-tl from-blue-400 to-yellow-500 w-full py-16 px-4' style={{ minHeight: '100vh' }}>
       <div className='flex flex-col items-center justify-center'>
-        <img className='h-20 ' src={logo} />
+        <img className='h-20' alt='logo' src={logo} />
         <form className='w-full h-full flex justify-center' onSubmit={handleLogin}>
           <div className='bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-16'>
             <p tabIndex={0} role='heading' aria-label='Login to your account' className='text-2xl font-extrabold leading-6 text-gray-800'>
