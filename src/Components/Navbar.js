@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export function Navbar() {
+  const {logout} = useAuth0()
   const [show, setShow] = useState(null)
   const [profile, setProfile] = useState(false)
 
   const routes = [
     { path: '/dashboard', title: 'dashboard' },
     { path: 'profile/2', title: 'profile' },
-    { path: '/dashboard/post/new', title: 'new post' }
+    { path: '/dashboard/post/new', title: 'new post' },
+    { path: '/dashboard/profile', title: 'My profile' }
   ]
-  const getUser = localStorage.getItem('id')
+
   return (
     <>
       <div className='bg-gray-200 h-16 w-full fixed z-10 top-0'>
@@ -51,41 +54,9 @@ export function Navbar() {
                       </NavLink>
                     )
                   })}
+              <button className='capitalize flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-indigo-400 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out' onClick={() => logout()}>Log Out</button>
                 </div>
-                <div className='hidden xl:flex items-center'>
 
-                  <div className='ml-6 relative'>
-                    <div className='flex items-center relative' onClick={() => setProfile(!profile)}>
-                      {profile && (
-                        <ul className='p-2 w-40 border-r bg-white absolute z-10 rounded right-0 shadow top-0 mt-16 animate__animated animate__backInDown'>
-                          <NavLink to={`profile/${getUser}`} className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none'>
-                            <div className='flex items-center'>
-                              <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z' /></svg>
-                              <span className='ml-2'>My Profile</span>
-                            </div>
-                          </NavLink>
-                          <li className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none'>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M24 13.616v-3.232c-1.651-.587-2.694-.752-3.219-2.019v-.001c-.527-1.271.1-2.134.847-3.707l-2.285-2.285c-1.561.742-2.433 1.375-3.707.847h-.001c-1.269-.526-1.435-1.576-2.019-3.219h-3.232c-.582 1.635-.749 2.692-2.019 3.219h-.001c-1.271.528-2.132-.098-3.707-.847l-2.285 2.285c.745 1.568 1.375 2.434.847 3.707-.527 1.271-1.584 1.438-3.219 2.02v3.232c1.632.58 2.692.749 3.219 2.019.53 1.282-.114 2.166-.847 3.707l2.285 2.286c1.562-.743 2.434-1.375 3.707-.847h.001c1.27.526 1.436 1.579 2.019 3.219h3.232c.582-1.636.75-2.69 2.027-3.222h.001c1.262-.524 2.12.101 3.698.851l2.285-2.286c-.744-1.563-1.375-2.433-.848-3.706.527-1.271 1.588-1.44 3.221-2.021zm-12 2.384c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4z' /></svg>
-                            <span className='ml-2'>Account Settings</span>
-                          </li>
-                          <NavLink onClick={() => localStorage.removeItem('id')} to='/' className='cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center'>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M10 2v2h12v16h-12v2h14v-20h-14zm0 7.408l2.963 2.592-2.963 2.592v-1.592h-8v-2h8v-1.592zm-2-4.408v4h-8v6h8v4l8-7-8-7z' /></svg>
-                            <span className='ml-2'>Log Out</span>
-                          </NavLink>
-                        </ul>
-                      )}
-                      <div className='cursor-pointer flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out'>
-                        <img className='rounded-full h-10 w-10 object-cover' src='https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_2.png' alt='logo' />
-                      </div>
-                      <div className='ml-2 text-gray-600'>
-                        <svg xmlns='http://www.w3.org/2000/svg' className='icon icon-tabler icon-tabler-chevron-down cursor-pointer' width={20} height={20} viewBox='0 0 24 24' strokeWidth='1.5' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round'>
-                          <path stroke='none' d='M0 0h24v24H0z' />
-                          <polyline points='6 9 12 15 18 9' />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

@@ -15,8 +15,8 @@ export const PrivateRouter = () => {
       <Sidebar />
       <div className='flex flex-row w-full flex-grow lg:pl-80 mt-16'>
         <Routes>
-          <Route path='profile' element={<ShowUsers />} />
-          <Route path='profile/:id' element={<Profile />} />
+          {/* <Route path='profile' element={<ShowUsers />} /> */}
+          <Route path='profile' element={<Profile />} />
           <Route path='post/:id' element={<ShowPost />} />
           <Route path='post/new' element={<CreatePost />} />
           <Route path='post/:new/edit' element={<CreatePost />} />
