@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"watch:css\"  \"json-server --watch db/user.json\"",
-    "build": "npm run watch:css && react-scripts build",
+    "build":  "concurrently \"react-scripts build\" \"watch:css\"  \"json-server --watch db/user.json\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:css": "postcss tailwind.css -o src/css/main.css",
