@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-react": "^1.8.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -27,11 +28,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run watch:css && react-scripts build",
+    "start": "concurrently \"npm run server\" \"watch:css\"  \"json-server --watch db/user.json\"",
+    "build":  "concurrently \"react-scripts build\" \"watch:css\"  \"json-server --watch db/user.json\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:css": "postcss tailwind.css -o src/css/main.css"
+    "watch:css": "postcss tailwind.css -o src/css/main.css",
+    "server":"set PORT=3001 && react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"

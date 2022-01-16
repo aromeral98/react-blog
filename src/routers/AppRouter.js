@@ -2,7 +2,6 @@ import React from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { AppLayout } from '../Pages/AppLayout'
 import { LoginScreen } from '../Pages/LoginScreen'
-import RegisterScreen from '../Pages/RegisterScreen'
 
 export const AppRouter = () => {
   return (
@@ -10,7 +9,6 @@ export const AppRouter = () => {
       <div className='w-full min-h-full'>
         <Routes>
           <Route path='/' element={<LoginScreen />} />
-          <Route path='/register' element={<RegisterScreen />} />
           <Route path='/dashboard/*' element={<AppLayout />} />
         </Routes>
       </div>
