@@ -46,7 +46,7 @@ export function Navbar () {
                 <div className='hidden xl:flex md:mr-6 xl:mr-16'>
                   {routes.map(route => {
                     return (
-                      <NavLink key={route.title} to={route.path} className="capitalize flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-indigo-400 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
+                      <NavLink key={route.title} to={route.path} className='capitalize flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-indigo-400 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
                         {route.title}
                       </NavLink>
                     )
@@ -89,25 +89,24 @@ export function Navbar () {
         </nav>
         {/* Code block ends */}
       </div>
-      <div className={show ? 'w-full xl:hidden h-full absolute z-40  transform  translate-x-0 animate__animated animate__fadeInLeft' : '   w-full xl:hidden h-full absolute z-40  transform -translate-x-full'}>
+      <div className={show ? 'w-full xl:hidden h-full absolute z-40 animate__animated animate__fadeInLeft' : (show !== null) ? ' w-full xl:hidden h-full absolute z-40  animate__animated animate__fadeOutLeft' : ' hidden'}>
         <div className='bg-gray-800 opacity-50 w-full h-full' onClick={() => setShow(!show)} />
         <div className='w-64 z-40 fixed overflow-y-auto top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out'>
           <div className='px-6 h-full'>
             <div className='flex flex-col justify-between h-full w-full'>
               <div className='border-t-2 border-b-2 border-indigo-700 mt-5'>
                 {routes.map(route => {
-                        return (
-                      <NavLink key={route.title} to={route.path} className='cursor-pointer uppercase font-ArialBold pt-2'>
-                        <div className='text-gray-800 py-5 text-xl border-t-2 border-b-2 border-indigo-700'>
+                  return (
+                    <NavLink key={route.title} to={route.path} className='cursor-pointer uppercase font-ArialBold pt-2'>
+                      <div className='text-gray-800 py-5 text-xl border-t-2 border-b-2 border-indigo-700'>
                         <div className='flex items-center'>
-                        <div className='w-6 h-6 md:w-8 md:h-8 text-indigo-700'>
+                          <div className='w-6 h-6 md:w-8 md:h-8 text-indigo-700' />
+                          <p className='text-indigo-700 xl:text-base text-base ml-3'>{route.title}</p>
                         </div>
-                        <p className='text-indigo-700 xl:text-base text-base ml-3'>{route.title}</p>
                       </div>
-                      </div>
-                      </NavLink>
-                        )
-                      })}
+                    </NavLink>
+                  )
+                })}
               </div>
               <div className='w-full pt-4'>
                 <div className='flex justify-center mb-4 w-full'>
