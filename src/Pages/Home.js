@@ -1,6 +1,5 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
 import api from '../js/api'
 
 export const Home = () => {
@@ -72,10 +71,10 @@ export const Home = () => {
                       <dt className='text-sm font-medium text-gray-400'>Published:</dt>
                       <dd className='text-sm text-gray-300 ml-2'>{post.published}</dd>
                     </div>
-                    <div className='flex flex-row'>
-                      <NavLink to={`post/${post.id}/edit`} type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none lg:mx-2 mr-2 text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4'>
+                    <div className='flex flex-row justify-end'>
+                      {/* <NavLink to={`post/${post.id}/edit`} type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none lg:mx-2 mr-2 text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4'>
                         Edit my post
-                      </NavLink>
+                      </NavLink> */}
                       <button onClick={() => handleOnDelete(post.id)} type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-red-700 border rounded hover:bg-red-600 py-4'>
                         Delete my post
                       </button>
