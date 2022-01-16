@@ -36,53 +36,53 @@ export const Home = () => {
         {(posts !== '')
           ? posts.filter(post => post.author === user?.name).sort((a, b) => b.id - a.id).map(post => {
               return (
-              <div
-                key={post.id}
-                className='relative m-4 w-full bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
-              >
-                <span
-                  className='absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'
-                />
+                <div
+                  key={post.id}
+                  className='relative m-4 w-full bg-gray-900 block p-8 overflow-hidden border border-gray-100 rounded-lg'
+                >
+                  <span
+                    className='absolute inset-x-0 bottom-0 h-2  bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'
+                  />
 
-                <div className='justify-between sm:flex'>
-                  <div>
-                    <h5 className='text-xl font-bold text-gray-100'>
-                      {post.title}
-                    </h5>
-                    <p className='mt-1 text-xs font-medium text-gray-400'>By {post.author}</p>
+                  <div className='justify-between sm:flex'>
+                    <div>
+                      <h5 className='text-xl font-bold text-gray-100'>
+                        {post.title}
+                      </h5>
+                      <p className='mt-1 text-xs font-medium text-gray-400'>By {post.author}</p>
+                    </div>
+
+                    <div className='flex-shrink-0 hidden ml-3 sm:block'>
+                      <img
+                        className='object-cover w-16 h-16 rounded-lg shadow-sm'
+                        src={post.img}
+                        alt=''
+                      />
+                    </div>
                   </div>
 
-                  <div className='flex-shrink-0 hidden ml-3 sm:block'>
-                    <img
-                      className='object-cover w-16 h-16 rounded-lg shadow-sm'
-                      src={post.img}
-                      alt=''
-                    />
+                  <div className='mt-4 sm:pr-8'>
+                    <p className='text-sm text-gray-200'>
+                      {post.description}
+                    </p>
                   </div>
+
+                  <dl className='flex justify-between mt-6'>
+                    <div className='flex flex-row '>
+                      <dt className='text-sm font-medium text-gray-400'>Published:</dt>
+                      <dd className='text-sm text-gray-300 ml-2'>{post.published}</dd>
+                    </div>
+                    <div className='flex flex-row'>
+                      <NavLink to={`post/${post.id}/edit`} aria-label='create my account' type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none mx-2 text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4'>
+                        Edit my post
+                      </NavLink>
+                      <button onClick={() => handleOnDelete(post.id)} aria-label='create my account' type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-red-700 border rounded hover:bg-red-600 py-4'>
+                        Delete my post
+                      </button>
+                    </div>
+
+                  </dl>
                 </div>
-
-                <div className='mt-4 sm:pr-8'>
-                  <p className='text-sm text-gray-200'>
-                    {post.description}
-                  </p>
-                </div>
-
-                <dl className='flex justify-between mt-6'>
-                  <div className='flex flex-row '>
-                    <dt className='text-sm font-medium text-gray-400'>Published:</dt>
-                    <dd className='text-sm text-gray-300 ml-2'>{post.published}</dd>
-                  </div>
-                  <div className='flex flex-row'>
-                    <NavLink to={`post/${post.id}/edit`} aria-label='create my account' type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none mx-2 text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4'>
-                      Edit my post
-                    </NavLink>
-                    <button onClick={() => handleOnDelete(post.id)} aria-label='create my account' type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-red-700 border rounded hover:bg-red-600 py-4'>
-                      Delete my post
-                    </button>
-                  </div>
-
-                </dl>
-              </div>
               )
             })
           : ''}

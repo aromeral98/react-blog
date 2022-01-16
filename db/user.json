@@ -1,3 +1,20 @@
 {
-  "posts": []
+  "posts": [
+    {
+      "title": "",
+      "description": "(params.new !== undefined) ? post.title : ''",
+      "author": "Todo Para PC",
+      "published": "2022-01-16T16:43:32.767Z",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU",
+      "id": 1
+    },
+    {
+      "title": "",
+      "description": "post.title",
+      "author": "Todo Para PC",
+      "published": "2022-01-16T16:44:29.104Z",
+      "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU",
+      "id": 2
+    }
+  ]
 }
