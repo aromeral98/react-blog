@@ -2,18 +2,15 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuth0 } from '@auth0/auth0-react'
 
-export function Navbar() {
-  const {logout} = useAuth0()
+export function Navbar () {
+  const { logout } = useAuth0()
   const [show, setShow] = useState(null)
-  const [profile, setProfile] = useState(false)
 
   const routes = [
     { path: '/dashboard', title: 'dashboard' },
-    { path: 'profile/2', title: 'profile' },
     { path: '/dashboard/post/new', title: 'new post' },
     { path: '/dashboard/profile', title: 'My profile' }
   ]
-
   return (
     <>
       <div className='bg-gray-200 h-16 w-full fixed z-10 top-0'>
@@ -49,7 +46,7 @@ export function Navbar() {
                 <div className='hidden xl:flex md:mr-6 xl:mr-16'>
                   {routes.map(route => {
                     return (
-                      <NavLink key={route.title} to={route.path} className='capitalize flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-indigo-400 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'>
+                      <NavLink key={route.title} to={route.path} className={'capitalize flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-indigo-400 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out'}>
                         {route.title}
                       </NavLink>
                     )

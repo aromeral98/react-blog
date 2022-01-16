@@ -1,3 +1,4 @@
+import { useAuth0 } from '@auth0/auth0-react'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from '../hooks/useForm'
@@ -8,11 +9,12 @@ export const CreatePost = (props) => {
   const params = useParams()
   const now = new Date()
   const [formValues, handleInputChange] = useForm({
-    title: '',
-    description: ''
+    title: post.title,
+    description: post.description
   })
   const navigate = useNavigate()
   const { title, description } = formValues
+  const { user } = useAuth0()
 
   useEffect(() => {
     api.auth.getPost(params.new).then(response => {
@@ -23,17 +25,17 @@ export const CreatePost = (props) => {
       }
     })
   }, [params.new])
-
+  console.log(params.new)
   function handleOnSubmit (e) {
     e.preventDefault()
-    api.auth.createPost({ title: title, description: description, author: localStorage.getItem('username'), published: now, author_id: parseInt(localStorage.getItem('id')), img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
+    api.auth.createPost({ title: post.title, description: post.description, author: user.name, email: user.email, published: now, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
     alert('POST CREATED SUCCESFULLY')
     navigate('/dashboard')
   }
   function handleOnSubmitEdit (e) {
     e.preventDefault()
-    api.auth.editPost(params.new, { title: title, description: description, author: post.author, published: now })
-    navigate(`/dashboard/post/${params.new}`)
+    api.auth.editPost(params.new, { title: title, description: description, author: post.author, published: now, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
+    navigate(`/dashboard`)
   }
 
   return (

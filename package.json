@@ -28,11 +28,12 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "npm run watch:css && react-scripts start",
+    "start": "concurrently \"npm run server\"  \"json-server --watch db/user.json\"",
     "build": "npm run watch:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "watch:css": "postcss tailwind.css -o src/css/main.css"
+    "watch:css": "postcss tailwind.css -o src/css/main.css",
+    "server":"set PORT=3001 && react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
