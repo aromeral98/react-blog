@@ -37,11 +37,11 @@ export const CreatePost = (props) => {
     e.preventDefault()
     console.log(title, description)
     api.auth.editPost(params.new, { title: title, description: description, author: post.author, published: now, img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHYyboBUj0H3vf-miQqJTFkCzTtp2qwLwFuA&usqp=CAU' })
-    navigate('/dashboard')
+    // navigate('/dashboard')
   }
 
   return (
-    <form className='w-full flex justify-center mb-10 px-4' onSubmit={(params.new === undefined) ? handleOnSubmit : handleOnSubmitEdit}>
+    <form className='w-full flex justify-center mb-10 px-4 animate__animated animate__fadeInRightBig' onSubmit={(params.new === undefined) ? handleOnSubmit : handleOnSubmitEdit}>
       <div className='bg-white  shadow rounded lg:w-2/3  md:w-1/2 w-full  p-10 mt-16'>
         <div>
           <label className='text-sm font-medium leading-none text-gray-800'>Title</label>

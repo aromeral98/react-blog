@@ -67,16 +67,16 @@ export const Home = () => {
                     </p>
                   </div>
 
-                  <dl className='flex justify-between mt-6'>
-                    <div className='flex flex-row '>
+                  <dl className='flex flex-col lg:justify-between mt-6'>
+                    <div className='flex flex-row my-2'>
                       <dt className='text-sm font-medium text-gray-400'>Published:</dt>
                       <dd className='text-sm text-gray-300 ml-2'>{post.published}</dd>
                     </div>
                     <div className='flex flex-row'>
-                      <NavLink to={`post/${post.id}/edit`} aria-label='create my account' type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none mx-2 text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4'>
+                      <NavLink to={`post/${post.id}/edit`} type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none lg:mx-2 mr-2 text-white focus:outline-none bg-indigo-700 border rounded hover:bg-indigo-600 py-4'>
                         Edit my post
                       </NavLink>
-                      <button onClick={() => handleOnDelete(post.id)} aria-label='create my account' type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-red-700 border rounded hover:bg-red-600 py-4'>
+                      <button onClick={() => handleOnDelete(post.id)} type='submit' className='px-2 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 text-sm font-semibold leading-none text-white focus:outline-none bg-red-700 border rounded hover:bg-red-600 py-4'>
                         Delete my post
                       </button>
                     </div>

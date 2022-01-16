@@ -28,7 +28,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\"  \"json-server --watch db/user.json\"",
+    "start": "concurrently \"npm run server\" \"watch:css\"  \"json-server --watch db/user.json\"",
     "build": "npm run watch:css && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

@@ -4,8 +4,20 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
 
 export const LoginScreen = (props) => {
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
   const navigate = useNavigate()
+
+  if (isLoading) {
+    return (
+      <div className=' absolute z-50 bg-gradient-to-tl from-blue-400 to-yellow-500 h-full w-full flex justify-center items-center'>
+        <div class=' flex justify-center flex-col items-center font-ArialBold text-xl'>
+          LOADING ...
+          <div class='animate-spin rounded-full h-48 w-48 border-b-2 mt-2 border-gray-900' />
+        </div>
+      </div>
+    )
+  }
+
   isAuthenticated && (
     navigate('/dashboard')
   )
