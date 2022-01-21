@@ -10,7 +10,7 @@ export const PrivateRouter = () => {
   return (
     <div className='w-full h-full'>
       <Navbar />
-      <div className='flex flex-row w-full flex-grow mt-16'>
+      <div className='flex flex-row w-full flex-grow mt-16 overflow-y-hidden'>
         <Routes>
           <Route path='profile' element={<Profile />} />
           <Route path='post/:id' element={<ShowPost />} />

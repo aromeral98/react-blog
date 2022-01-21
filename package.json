@@ -16,6 +16,7 @@
     "react-device-detect": "^1.15.0",
     "react-document-meta": "^3.0.0-beta.2",
     "react-dom": "^16.13.1",
+    "react-flash-message": "^1.0.8",
     "react-i18next": "^11.8.5",
     "react-lottie-player": "^1.1.1",
     "react-redux": "^7.2.2",
@@ -29,11 +30,11 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"watch:css\"  \"json-server --watch db/user.json\"",
-    "build":  "concurrently \"react-scripts build\" \"watch:css\"  \"json-server --watch db/user.json\"",
+    "build": "concurrently \"react-scripts build\" \"watch:css\"  \"json-server --watch db/user.json\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:css": "postcss tailwind.css -o src/css/main.css",
-    "server":"set PORT=3001 && react-scripts start"
+    "server": "set PORT=3001 && react-scripts start"
   },
   "eslintConfig": {
     "extends": "react-app"
