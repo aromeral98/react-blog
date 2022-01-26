@@ -1,31 +1,3 @@
 {
-  "posts": [
-    {
-      "title": "tete",
-      "description": "\nststet",
-      "author": "Todo Para PC",
-      "email": "romeralalex@gmail.com",
-      "published": "2022-01-21T20:27:58.287Z",
-      "img": "https://www.dzoom.org.es/wp-content/uploads/2020/02/portada-foto-perfil-redes-sociales-consejos.jpg",
-      "id": 1
-    },
-    {
-      "title": "fasfas",
-      "description": "fasfas",
-      "author": "Todo Para PC",
-      "email": "romeralalex@gmail.com",
-      "published": "2022-01-21T20:33:35.184Z",
-      "img": "fasfasf",
-      "id": 2
-    },
-    {
-      "title": "fasfasfa",
-      "description": "sfasfafas",
-      "author": "Todo Para PC",
-      "email": "romeralalex@gmail.com",
-      "published": "2022-01-21T20:36:24.543Z",
-      "img": "fasfasf",
-      "id": 3
-    }
-  ]
+  "posts": []
 }
